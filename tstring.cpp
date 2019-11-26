@@ -50,7 +50,7 @@ return *this;
 
 
 }
-TString$ TString::operator=(TString&& s){
+TString & TString::operator=(TString&& s){
     if(this !=&s){
         delete[] ptr;
         len=s.len;
