@@ -7,6 +7,7 @@ class TString {
 TString(const TString& s);
 TString& operator= (const TString& s);
 ~TString();
+TString& operator=(TString&& s);
 
  //interfejs
  private:

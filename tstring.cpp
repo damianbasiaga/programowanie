@@ -50,3 +50,16 @@ return *this;
 
 
 }
+TString$ TString::operator=(TString&& s){
+    if(this !=&s){
+        delete[] ptr;
+        len=s.len;
+        ptr=s.ptr;
+        s.len=0;
+        s.ptr=nullptr;
+    }
+    #ifdef DEBUG
+    cout<<"TString move operator="<<len<<"-"<<(ptr ? ptr : "pusty")<<endl;
+    #endif
+    return*this;
+}
