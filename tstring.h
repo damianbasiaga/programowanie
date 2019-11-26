@@ -8,6 +8,8 @@ TString(const TString& s);
 TString& operator= (const TString& s);
 ~TString();
 TString& operator=(TString&& s);
+char& operator[](size_t n);
+const char& operator[](size_t n)const;
 
  //interfejs
  private:
