@@ -1,6 +1,6 @@
-#include"tstring.h"
-#include<iostream>
-#include<stdexcept>
+#include "tstring.h"
+#include <iostream>
+#include <stdexcept>
 using namespace std;
 TString::TString(const char* s):ptr(nullptr), len(0){ 
     if(s>0){
@@ -48,25 +48,40 @@ TString& TString::operator= (const TString& s){
 cout<<"TString copy operator= "<< len <<" - "<<(ptr ? ptr : "pusty")<<endl;
 #endif
 return *this;
-char&TString::operator[](size_t n){
-    if(!ptr) throw invalid_argument("pusty obiekt");
-    if(n>0 && n<len) return ptr[n];
-    throw out_of_range("In TString::operator[ argument out of scope");
+
 
 }
-const char& TString::operator[](size_t n) const{}
+TString& TString::operator= ( TString&& s){
+
+ if (this != &s) {
+     delete []ptr;
+     len=s.len;
+     ptr=s.ptr;
+     s.len=0;
+     s.ptr = nullptr;
+ }
+ #ifdef DEBUG
+ cout<<"TString move operator= "<< len <<" - "<<(ptr ? ptr : "pusty")<<endl;
+#endif
+return *this;
+
 
 }
-TString & TString::operator=(TString&& s){
-    if(this !=&s){
-        delete[] ptr;
-        len=s.len;
-        ptr=s.ptr;
-        s.len=0;
-        s.ptr=nullptr;
-    }
-    #ifdef DEBUG
-    cout<<"TString move operator="<<len<<"-"<<(ptr ? ptr : "pusty")<<endl;
-    #endif
-    return*this;
+char& TString::operator[]( size_t n ) { 
+
+if ( !ptr ) throw invalid_argument("pusty obiekt");
+if ( n >= 0 && n < len ) return ptr[ n ];
+
+throw out_of_range("In TString::operator[] argument out of scope");
 }
+const char& TString::operator[]( size_t n ) const { 
+if ( !ptr ) throw invalid_argument("pusty obiekt");
+if ( n >= 0 && n < len ) return ptr[ n ];
+
+throw out_of_range("In TString::operator[] argument out of scope");
+
+
+
+
+
+ }
