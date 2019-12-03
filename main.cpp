@@ -17,6 +17,9 @@ int main ()
      // s3=std::move(s1);
       //TString s5= fun("konstruktor przenoszący");
       //TString s6= s4;
-      s1="zebym nie byl pusty";
-      cout<< s1[3]<<endl;
+      TString s4("inicjalizacja slowem");
+      TString s5=fun("jakis napis");
+      TString s6=s4;
+     // s1="zebym nie byl pusty";
+     // cout<< s1[3]<<endl;
 }
